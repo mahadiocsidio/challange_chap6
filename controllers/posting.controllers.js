@@ -28,7 +28,7 @@ module.exports= {
                 folder: '/posts',
             })
 
-            const post = await prisma.post.create({
+            const post = await prisma.posts.create({
                 data:{
                     title,
                     description,
@@ -57,7 +57,7 @@ module.exports= {
 
     getAllPost: async (req,res,next)=>{
         try {
-            const posts = await prisma.post.findMany({
+            const posts = await prisma.posts.findMany({
                 include:{
                     image: true,
                 }
@@ -77,7 +77,7 @@ module.exports= {
         try {
             const {id} = req.params;
 
-            const post = await prisma.post.findUnique({
+            const post = await prisma.posts.findUnique({
                 where:{
                     id: parseInt(id)
                 },
@@ -108,7 +108,7 @@ module.exports= {
                 })
             }
 
-            const post = await prisma.post.update({
+            const post = await prisma.posts.update({
                 where:{
                     id: parseInt(id)
                 },
@@ -134,7 +134,7 @@ module.exports= {
         try {
             const {id} = req.params;
 
-            const post = await prisma.post.delete({
+            const post = await prisma.posts.delete({
                 where:{
                     id: parseInt(id)
                 },
